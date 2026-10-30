@@ -57,8 +57,8 @@ We will send messages **with a key**, using the format `key:value`
 ./kafka-console-producer.sh \
   --bootstrap-server localhost:9092 \
   --topic order-events \
-  --formatter-property parse.key=true \
-  --formatter-property key.separator=:
+  --reader-property parse.key=true \
+  --reader-property key.separator=:
 ```
 
 ### Observe
