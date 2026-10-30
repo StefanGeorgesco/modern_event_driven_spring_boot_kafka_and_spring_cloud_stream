@@ -1,3 +1,5 @@
 spring:
   application:
     name: event-driven-playground
+  config:
+    import: ${section}/${config}.yml

@@ -1,4 +1,4 @@
-package fr.stefangeorgesco.eventdrivenplayground;
+package fr.stefangeorgesco.eventdrivenplayground.sec01;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
@@ -14,5 +14,4 @@ class TestcontainersConfiguration {
 	KafkaContainer kafkaContainer() {
 		return new KafkaContainer(DockerImageName.parse("apache/kafka-native:latest"));
 	}
-
 }
