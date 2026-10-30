@@ -14,7 +14,7 @@ public class SectionRunner {
         SpringApplication.run(
                 SectionRunner.class,
                 "--section=sec01",
-                "--config=03-consumer-group"
+                "--config=04-multiple-topics"
         );
     }
 
