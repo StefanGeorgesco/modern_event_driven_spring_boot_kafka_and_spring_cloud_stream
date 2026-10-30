@@ -2,8 +2,8 @@
 
 ### Prerequisite
 
-* Ensure you have completed the **previous demo**
-* The topic `order-events` must already exist **with 2 partitions**
+- Ensure you have completed the **previous demo**
+- The topic `order-events` must already exist **with 2 partitions**
 
 ---
 
@@ -20,8 +20,8 @@ docker exec -it kafka bash
 ./kafka-console-consumer.sh \
   --bootstrap-server localhost:9092 \
   --topic order-events \
-  --property print.offset=true \
-  --property print.key=true \
+  --formatter-property print.offset=true \
+  --formatter-property print.key=true \
   --group payment-service
 ```
 
@@ -33,13 +33,13 @@ docker exec -it kafka bash
 ./kafka-console-consumer.sh \
   --bootstrap-server localhost:9092 \
   --topic order-events \
-  --property print.offset=true \
-  --property print.key=true \
+  --formatter-property print.offset=true \
+  --formatter-property print.key=true \
   --group payment-service
 ```
 
-* Both consumers belong to the **same consumer group**
-* Kafka will distribute partitions between them
+- Both consumers belong to the **same consumer group**
+- Kafka will distribute partitions between them
 
 ### Start a Console Producer
 
@@ -57,12 +57,12 @@ We will send messages **with a key**, using the format `key:value`
 ./kafka-console-producer.sh \
   --bootstrap-server localhost:9092 \
   --topic order-events \
-  --property parse.key=true \
-  --property key.separator=:
+  --formatter-property parse.key=true \
+  --formatter-property key.separator=:
 ```
 
 ### Observe
 
-* Produce multiple messages
-* Notice how messages are **distributed across the two consumers**
-* Each partition is consumed by **only one consumer in the group**
+- Produce multiple messages
+- Notice how messages are **distributed across the two consumers**
+- Each partition is consumed by **only one consumer in the group**

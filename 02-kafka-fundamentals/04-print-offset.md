@@ -1,6 +1,4 @@
-
 ## Print Offset
-
 
 ### Start Kafka with a clean state
 
@@ -13,6 +11,7 @@ docker compose up
 ```
 
 ### Access the container
+
 - Ensure that you are in the `/opt/kafka/bin` directory.
 
 ```bash
@@ -31,14 +30,17 @@ docker exec -it kafka bash
 ./kafka-console-consumer.sh \
     --bootstrap-server localhost:9092 \
     --topic demo-topic \
-    --property print.offset=true
+    --formatter-property print.offset=true
 ```
+
 - This property `print.offset=true` enables offset printing along with each message
 
 ### Start a console producer
+
 - Open another terminal (or another shell in the container)
 
 ```bash
 ./kafka-console-producer.sh --bootstrap-server localhost:9092 --topic demo-topic
 ```
+
 - Type some messages to observe the consumer output.

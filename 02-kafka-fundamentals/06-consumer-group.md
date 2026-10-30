@@ -2,12 +2,13 @@
 
 ### Start Kafka with a Clean State
 
-- Go to the `01-kafka-setup` directory and restart Kafka to ensure a clean demo. 
+- Go to the `01-kafka-setup` directory and restart Kafka to ensure a clean demo.
 
 ```bash
 docker compose down
 docker compose up
 ```
+
 - Please ensure that you create the `demo-topic`.
 
 ```bash
@@ -28,7 +29,7 @@ docker exec -it kafka bash
 ./kafka-console-consumer.sh \
   --bootstrap-server localhost:9092 \
   --topic demo-topic \
-  --property print.offset=true \
+  --formatter-property print.offset=true \
   --group payment-service
 ```
 
@@ -38,9 +39,10 @@ docker exec -it kafka bash
 ./kafka-console-consumer.sh \
   --bootstrap-server localhost:9092 \
   --topic demo-topic \
-  --property print.offset=true \
+  --formatter-property print.offset=true \
   --group inventory-service
 ```
+
 ## Start a Console Producer
 
 Open **another terminal**, access the container.
@@ -60,6 +62,7 @@ Start the producer:
 Type some messages and press **Enter**.
 
 ## List all the consumer groups
+
 ```bash
 ./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
 ```
