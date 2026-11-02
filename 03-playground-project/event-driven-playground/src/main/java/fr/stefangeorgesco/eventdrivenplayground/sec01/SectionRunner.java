@@ -9,8 +9,7 @@ import tools.jackson.databind.json.JsonMapper;
 @SpringBootApplication
 public class SectionRunner {
 
-    @SuppressWarnings("unused")
-    static void main(String[] args) {
+    static void main() {
         SpringApplication.run(
                 SectionRunner.class,
                 "--section=sec01",

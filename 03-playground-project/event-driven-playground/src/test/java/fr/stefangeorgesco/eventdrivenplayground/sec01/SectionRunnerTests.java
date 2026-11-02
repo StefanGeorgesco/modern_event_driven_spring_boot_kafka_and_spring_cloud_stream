@@ -5,11 +5,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
 @Import(TestcontainersConfiguration.class)
-@SpringBootTest
+@SpringBootTest(properties = {
+		"section=sec00",
+		"config=tests"
+})
+@SuppressWarnings("SpringBootApplicationProperties")
 class SectionRunnerTests {
 
 	@Test
 	void contextLoads() {
 	}
-
 }
