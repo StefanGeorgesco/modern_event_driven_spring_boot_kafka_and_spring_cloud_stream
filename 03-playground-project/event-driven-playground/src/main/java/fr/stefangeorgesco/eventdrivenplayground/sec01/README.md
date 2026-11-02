@@ -19,7 +19,7 @@ docker exec -it kafka bash
 ./kafka-topics.sh --bootstrap-server localhost:9092 --list
 ```
 
-2. Start the `ConsumerRunner` with below config.
+2. Start the `Consumer1Runner` with below config.
 
 ```java
 void main(String[] args) {
@@ -52,7 +52,7 @@ void main(String[] args) {
 
 ### Demo 2: Consume From Beginning
 
-1. Start the `ConsumerRunner` with below config.
+1. Start the `Consumer1Runner` with below config.
 
 ```java
 void main(String[] args) {
@@ -66,7 +66,7 @@ void main(String[] args) {
 
 ### Demo 3: Consumer Group Name
 
-1. Start the `ConsumerRunner` with below config.
+1. Start the `Consumer1Runner` with below config.
 
 ```java
 void main(String[] args) {
@@ -80,7 +80,7 @@ void main(String[] args) {
 
 ### Demo 4: Consuming Multiple Topics
 
-1. Start the `ConsumerRunner` with below config.
+1. Start the `Consumer1Runner` with below config.
 
 ```java
 void main(String[] args) {
