@@ -17,6 +17,7 @@ public class ProducerConfig {
     private static final Logger log = LoggerFactory.getLogger(ProducerConfig.class);
 
     @Bean
+    @SuppressWarnings("DuplicatedCode")
     public Supplier<Order> producer() {
         var counter = new AtomicInteger(0);
         return () -> {
