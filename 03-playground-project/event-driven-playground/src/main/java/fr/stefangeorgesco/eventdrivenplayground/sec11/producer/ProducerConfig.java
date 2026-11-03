@@ -1,4 +1,4 @@
-package com.vinsguru.playground.sec11.producer;
+package fr.stefangeorgesco.eventdrivenplayground.sec11.producer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,5 +22,4 @@ public class ProducerConfig {
             return msg;
         };
     }
-
 }

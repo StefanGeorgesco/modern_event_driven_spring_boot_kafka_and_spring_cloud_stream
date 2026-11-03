@@ -1,4 +1,4 @@
-package fr.stefangeorgesco.eventdrivenplayground.sec03;
+package fr.stefangeorgesco.eventdrivenplayground.sec11;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +13,8 @@ public class ConsumerRunner {
     static void main() {
         SpringApplication.run(
                 ConsumerRunner.class,
-                "--section=sec03",
-                "--config=03-message-consumer"
+                "--section=sec11",
+                "--config=01-consumer"
         );
     }
 

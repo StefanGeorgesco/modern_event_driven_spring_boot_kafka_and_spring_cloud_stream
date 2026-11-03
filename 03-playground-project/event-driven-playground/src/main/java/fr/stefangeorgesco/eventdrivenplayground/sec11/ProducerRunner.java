@@ -1,4 +1,4 @@
-package fr.stefangeorgesco.eventdrivenplayground.sec03;
+package fr.stefangeorgesco.eventdrivenplayground.sec11;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +13,8 @@ public class ProducerRunner {
     static void main() {
         SpringApplication.run(
                 ProducerRunner.class,
-                "--section=sec03",
-                "--config=04-message-producer"
+                "--section=sec11",
+                "--config=02-producer"
         );
     }
 

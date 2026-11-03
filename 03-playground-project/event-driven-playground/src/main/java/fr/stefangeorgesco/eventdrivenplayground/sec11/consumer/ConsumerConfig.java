@@ -1,4 +1,4 @@
-package com.vinsguru.playground.sec11.consumer;
+package fr.stefangeorgesco.eventdrivenplayground.sec11.consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +13,7 @@ public class ConsumerConfig {
     private static final Logger log = LoggerFactory.getLogger(ConsumerConfig.class);
 
     @Bean
-    public Consumer<String> consumer(){
+    public Consumer<String> consumer() {
         return msg -> log.info("received: {}", msg);
     }
-
 }

@@ -21,17 +21,21 @@ Create a topic with **1 partition** and **3 replicas**.
 Start the **Consumer** application.
 
 ```java
-SpringApplication.run(
-        Consumer.class, "--section=sec11", "--config=01-consumer"
-);
+void main() {
+    SpringApplication.run(
+            Consumer.class, "--section=sec11", "--config=01-consumer"
+    );
+}
 ```
 
 Start the **Producer** application.
 
 ```java
-SpringApplication.run(
-        Producer.class, "--section=sec11", "--config=02-producer"
-);
+void main() {
+    SpringApplication.run(
+            Producer.class, "--section=sec11", "--config=02-producer"
+    );
+}
 ```
 
 Once the producer starts producing messages, ensure that the consumer is consuming them.
