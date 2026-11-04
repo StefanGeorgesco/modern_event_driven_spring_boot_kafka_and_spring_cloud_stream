@@ -33,6 +33,7 @@ public class OrderedMessageProcessorConfig {
     @Bean
     public Function<List<Order>, List<Message<Object>>> deliveryProcessor(DeliveryService deliveryService) {
         return orders -> this.partitionByCustomerId(orders)
+                // Java 24
                 .gather(Gatherers.mapConcurrent(MAX_CONCURRENCY, bucket ->
                         bucket.stream().map(deliveryService::toDelivery).toList()))
                 .flatMap(Collection::stream)

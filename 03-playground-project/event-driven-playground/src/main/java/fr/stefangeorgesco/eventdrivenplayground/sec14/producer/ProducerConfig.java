@@ -31,7 +31,7 @@ public class ProducerConfig {
 
     private Message<Order> toMessage(int input) {
         var productType = input % 2 == 0 ? ProductType.PHYSICAL : ProductType.DIGITAL;
-        var order = new Order(input, input, ThreadLocalRandom.current().nextInt(1, 1000), productType);
+        var order = new Order(input, input % 50, ThreadLocalRandom.current().nextInt(1, 1000), productType);
         return MessageBuilder.withPayload(order).setHeader(KafkaHeaders.KEY, input).build();
     }
 
