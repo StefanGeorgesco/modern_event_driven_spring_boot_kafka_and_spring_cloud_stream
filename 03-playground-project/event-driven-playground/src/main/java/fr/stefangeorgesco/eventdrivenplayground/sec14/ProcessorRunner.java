@@ -15,7 +15,7 @@ public class ProcessorRunner {
                 ProcessorRunner.class,
                 "--section=sec14",
                 "--config=03-processor",
-                "--processing.mode=unordered"
+                "--processing.mode=ordered"
         );
     }
 
