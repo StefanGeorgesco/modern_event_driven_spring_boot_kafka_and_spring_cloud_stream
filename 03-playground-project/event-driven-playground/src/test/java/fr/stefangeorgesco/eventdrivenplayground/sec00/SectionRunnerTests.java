@@ -1,4 +1,4 @@
-package fr.stefangeorgesco.eventdrivenplayground.sec01;
+package fr.stefangeorgesco.eventdrivenplayground.sec00;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Import;
 		"section=sec00",
 		"config=tests"
 })
-@SuppressWarnings("SpringBootApplicationProperties")
 class SectionRunnerTests {
 
 	@Test
