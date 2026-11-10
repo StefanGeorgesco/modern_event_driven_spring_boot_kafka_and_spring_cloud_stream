@@ -1,14 +1,31 @@
 package fr.stefangeorgesco.netflux.customer.messaging;
 
 import fr.stefangeorgesco.netflux.netflux.events.CustomerGenreUpdatedEvent;
-import org.springframework.context.event.EventListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cloud.stream.function.StreamBridge;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 @Component
 public class CustomerEventPublisher {
 
-    @EventListener
+    private static final Logger log = LoggerFactory.getLogger(CustomerEventPublisher.class);
+    private static final String CUSTOMER_EVENTS_OUT = "customer-events-out";
+    private final StreamBridge streamBridge;
+
+    public CustomerEventPublisher(StreamBridge streamBridge) {
+        this.streamBridge = streamBridge;
+    }
+
+    @TransactionalEventListener
     public void onGenreUpdatedEvent(CustomerGenreUpdatedEvent genreUpdatedEvent) {
-        // TO DO
+        var message = MessageBuilder.withPayload(genreUpdatedEvent)
+                .setHeader(KafkaHeaders.KEY, genreUpdatedEvent.customerId())
+                .build();
+        this.streamBridge.send(CUSTOMER_EVENTS_OUT, message);
+        log.info("published {}", message);
     }
 }

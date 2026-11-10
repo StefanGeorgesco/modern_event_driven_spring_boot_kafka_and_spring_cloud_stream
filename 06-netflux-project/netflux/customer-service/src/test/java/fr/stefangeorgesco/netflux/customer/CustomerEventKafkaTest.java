@@ -1,5 +1,6 @@
 package fr.stefangeorgesco.netflux.customer;
 
+import fr.stefangeorgesco.netflux.customer.dto.GenreUpdateRequest;
 import fr.stefangeorgesco.netflux.netflux.events.CustomerGenreUpdatedEvent;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
 import org.springframework.test.web.servlet.client.RestTestClient;
 
+import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @AutoConfigureRestTestClient
 @Import({
@@ -37,7 +43,21 @@ class CustomerEventKafkaTest {
     private BlockingQueue<Message<CustomerGenreUpdatedEvent>> queue;
 
     @Test
-    void genreUpdatedEvent() {
+    void genreUpdatedEvent() throws InterruptedException {
+        // send the genre update request to the REST endpoint
+        var request = new GenreUpdateRequest("Thriller");
+        this.testClient.patch()
+                .uri("/api/customers/2/genre")
+                .body(request)
+                .exchange()
+                .expectStatus().isNoContent();
+
+        // validate the event
+        var message = Objects.requireNonNull(this.queue.poll(5, TimeUnit.SECONDS));
+        var event = message.getPayload();
+        assertEquals(2, message.getHeaders().get(KafkaHeaders.RECEIVED_KEY, Integer.class));
+        assertEquals(2, event.customerId());
+        assertEquals("Thriller", event.favoriteGenre());
     }
 
     @TestConfiguration

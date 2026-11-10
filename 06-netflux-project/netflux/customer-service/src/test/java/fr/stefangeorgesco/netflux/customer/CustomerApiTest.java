@@ -15,9 +15,21 @@ class CustomerApiTest {
 
     @Test
     void customerDetails() {
+        this.testClient.get()
+                .uri("/api/customers/1")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.id").isEqualTo(1)
+                .jsonPath("$.name").isEqualTo("Sam")
+                .jsonPath("$.favoriteGenre").isEqualTo("Action");
     }
 
     @Test
     void customerNotFound() {
+        this.testClient.get()
+                .uri("/api/customers/999")
+                .exchange()
+                .expectStatus().isNotFound();
     }
 }

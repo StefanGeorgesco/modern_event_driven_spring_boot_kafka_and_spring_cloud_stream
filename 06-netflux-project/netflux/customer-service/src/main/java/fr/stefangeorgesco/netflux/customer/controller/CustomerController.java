@@ -30,6 +30,6 @@ public class CustomerController {
     @PatchMapping("/{customerId}/genre")
     public ResponseEntity<Void> updateGenre(@PathVariable Integer customerId, @RequestBody GenreUpdateRequest request) {
         this.customerService.updateCustomerGenre(customerId, request);
-        return ResponseEntity.noContent().build(); // 204
+        return ResponseEntity.noContent().build();
     }
 }
