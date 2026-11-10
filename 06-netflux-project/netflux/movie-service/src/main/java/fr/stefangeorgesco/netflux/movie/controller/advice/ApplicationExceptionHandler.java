@@ -15,5 +15,4 @@ public class ApplicationExceptionHandler {
         problem.setTitle("Movie Not Found");
         return problem;
     }
-
 }

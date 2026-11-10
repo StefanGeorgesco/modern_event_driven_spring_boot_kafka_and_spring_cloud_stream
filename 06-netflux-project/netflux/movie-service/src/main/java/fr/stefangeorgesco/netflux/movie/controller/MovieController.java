@@ -2,6 +2,7 @@ package fr.stefangeorgesco.netflux.movie.controller;
 
 import fr.stefangeorgesco.netflux.movie.dto.MovieDetails;
 import fr.stefangeorgesco.netflux.movie.service.MovieService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,6 @@ public class MovieController {
     @PostMapping
     public ResponseEntity<MovieDetails> saveMovie(@RequestBody MovieDetails request) {
         var movieDetails = this.movieService.saveMovie(request);
-        return ResponseEntity.ok(movieDetails);
+        return ResponseEntity.status(HttpStatus.CREATED).body(movieDetails);
     }
 }

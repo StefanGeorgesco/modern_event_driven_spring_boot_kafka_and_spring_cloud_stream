@@ -18,9 +18,21 @@ class MovieApiTest {
 
     @Test
     void movieDetails() {
+        this.testClient.get()
+                .uri("/api/movies/1")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.id").isEqualTo(1)
+                .jsonPath("$.title").isEqualTo("Inception")
+                .jsonPath("$.runtime").isEqualTo(150);
     }
 
     @Test
     void movieNotFound() {
+        this.testClient.get()
+                .uri("/api/movies/999")
+                .exchange()
+                .expectStatus().isNotFound();
     }
 }
